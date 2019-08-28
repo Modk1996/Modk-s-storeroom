@@ -1,0 +1,34 @@
+def getNum():  #获取数据
+    nums=[]
+    userInput=input('请输入数字（回车退出):')
+    while userInput!='':
+        nums.append(eval(userInput))
+        userInput=input('请输入数字（回车退出):')
+    return nums
+
+
+def mean(nums):  #求平均值
+    s=0.0
+    for i in nums:
+        s+=i
+    return s/len(nums)
+
+def dev(nums,mean):  #求方差
+    sdev=0.0
+    for i in nums:
+        sdev=sdev+(i-mean)**2
+    return (sdev/(len(nums)-1))**0.5
+
+def median(nums):  #求中位数
+    x=sorted(nums)
+    size=len(nums)
+    if size%2==0:
+        med=(x[size//2-1]+x[size//2])/2
+    else:
+        med=x[size//2]
+    return med
+n=getNum()
+a=mean(n)
+b=dev(n,a)
+c=median(n)
+print('平均值为{}，方差为{:.2f}，中位数为{}'.format(a,b,c))
