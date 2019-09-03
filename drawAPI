@@ -1,0 +1,19 @@
+import turtle
+def drawAPI(txt):
+    ls=list(map(eval,txt.split(',')))
+    turtle.pendown()
+    turtle.pencolor(ls[3],ls[4],ls[5])
+    turtle.fd(ls[0])
+    if ls[1]==0:
+        turtle.left(ls[2])
+    else:
+        turtle.right(ls[2])
+
+turtle.title("自动轨迹检测")
+turtle.setup(800,600,0,0)
+turtle.pencolor('red')
+turtle.pensize(5)
+f=open('data.txt','r')
+for line in f:
+    line=line.replace('\n','')
+    drawAPI(line)
